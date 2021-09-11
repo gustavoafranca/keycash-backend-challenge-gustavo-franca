@@ -20,6 +20,7 @@
   "homepage": "https://github.com/gustavoafranca/keycash-backend-challenge-gustavo-franca#readme",
   "dependencies": {
     "expres": "^0.0.5",
+    "mysql2": "^2.3.0",
     "typeorm": "^0.2.37"
   },
   "devDependencies": {
