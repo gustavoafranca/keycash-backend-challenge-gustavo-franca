@@ -1,0 +1,30 @@
+{
+  "name": "keycash-backend-challenge-gustavo-franca",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node-dev --files src/server.ts",
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gustavoafranca/keycash-backend-challenge-gustavo-franca.git"
+  },
+  "author": "Gustavo França",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gustavoafranca/keycash-backend-challenge-gustavo-franca/issues"
+  },
+  "homepage": "https://github.com/gustavoafranca/keycash-backend-challenge-gustavo-franca#readme",
+  "dependencies": {
+    "expres": "^0.0.5",
+    "typeorm": "^0.2.37"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.4.3"
+  }
+}
