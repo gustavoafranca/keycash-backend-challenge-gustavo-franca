@@ -13,7 +13,7 @@ export default class Tipo {
 	})
 	tipo: string;
 
-	@OneToMany(type => Imoveis, tipo => Tipo)
+	@OneToMany(type => Imoveis, tipo => tipo.tipo)
 	imoveis: Imoveis[];
 
 	@CreateDateColumn()

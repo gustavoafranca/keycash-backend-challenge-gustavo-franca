@@ -1,0 +1,509 @@
+{
+	"openapi": "3.0.0",
+	"info": {
+		"title": "API de CRUD para imóveis",
+		"description": "Essa api tem como objetivo em poder manipular os imóveis, como buscar, criar, alterar e deletar",
+		"termesOfService": "",
+		"contact": {
+			"email": "gustavoavelarfranca@gmail.com",
+			"whatsapp": "(31) 98343-6447"
+		},
+		"version": "1.0.0"
+	},
+	"servers": [
+		{
+			"url": "http://localhost:3333/v1",
+			"description": "Api para crud dos imóveis"
+		}
+	],
+	"paths": {
+		"/tipo/create": {
+			"post": {
+				"summary": "Cadastrar de tipo",
+				"description": "Essa rota é para criar os tipos de imóves",
+				"tags": [
+					"Tipo"
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Tipo"
+							},
+							"examples": {
+								"Tipo": {
+									"value": {
+										"tipo": "Apartamento"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"items": {
+										"$ref": "#/components/schemas/Tipo"
+									}
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "O tipo de imóvel já foi adicionado"
+					},
+					"400": {
+						"description": "Erro ao cadastrar"
+					}
+				}
+			}
+		},
+		"/tipo/search": {
+			"get": {
+				"summary": "Busca por nome do tipo",
+				"description": "Rota para buscar por nome do tipo",
+				"tags": [
+					"Tipo"
+				],
+				"parameters": [
+					{
+						"name": "tipo",
+						"in": "query",
+						"description": "Nome do tipo para buscar",
+						"required": true
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/Tipo"
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Erro ao cadastrar"
+					}
+				}
+			}
+		},
+		"/tipo/show/{id}": {
+			"get": {
+				"summary": "Busca tipo por ID",
+				"description": "Rota para buscar por id do tipo",
+				"tags": [
+					"Tipo"
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"description": "ID do tipo para buscar",
+						"required": true
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/Tipo"
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Erro ao cadastrar"
+					}
+				}
+			}
+		},
+		"/tipo/index": {
+			"get": {
+				"summary": "Traz todos os tipos de imóveis",
+				"description": "Rota trazer todos os tipos de imóveis",
+				"tags": [
+					"Tipo"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/Tipo"
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Erro ao cadastrar"
+					}
+				}
+			}
+		},
+		"/tipo/update/{id}": {
+			"put": {
+				"summary": "Editar o nome do tipo de imóveis",
+				"description": "Rota para editar o tipo",
+				"tags": [
+					"Tipo"
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"description": "ID para referenciar o tipo que vai ser editado",
+						"required": true
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Tipo"
+							},
+							"examples": {
+								"Tipo": {
+									"value": {
+										"tipo": "Apartamento"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"items": {
+										"$ref": "#/components/schemas/Tipo"
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Erro ao cadastrar"
+					}
+				}
+			}
+		},
+		"/tipo/delete/{id}": {
+			"delete": {
+				"summary": "Deletar o tipo de imóveis",
+				"description": "Rota para deletar o tipo",
+				"tags": [
+					"Tipo"
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"description": "ID para referenciar o tipo que vai ser excluido",
+						"required": true
+					}
+				],
+				"responses": {
+					"204": {
+						"description": "Deletado com Sucesso!"
+					},
+					"400": {
+						"description": "Erro ao cadastrar"
+					}
+				}
+			}
+		},
+		"/imoveis/create": {
+			"post": {
+				"summary": "Cadastrar imóveis",
+				"description": "Essa rota é para criar os imóves",
+				"tags": [
+					"Imóveis"
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Imoveis"
+							},
+							"examples": {
+								"Tipo": {
+									"value": {
+										"quarto": 6,
+										"metragem": 1200,
+										"vagas": 4,
+										"tipo": 1
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"items": {
+										"$ref": "#/components/schemas/Imoveis"
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Erro ao cadastrar"
+					}
+				}
+			}
+		},
+		"/imoveis/update/{id}": {
+			"put": {
+				"summary": "Cadastrar imóveis",
+				"description": "Essa rota é para criar os imóves",
+				"tags": [
+					"Imóveis"
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"description": "ID para referenciar o imóvel para editado",
+						"required": true
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Imoveis"
+							},
+							"examples": {
+								"Tipo": {
+									"value": {
+										"quarto": 6,
+										"metragem": 1200,
+										"vagas": 4,
+										"tipo": 1
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"items": {
+										"$ref": "#/components/schemas/Imoveis"
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Erro ao cadastrar"
+					}
+				}
+			}
+		},
+		"/imoveis/delete/{id}": {
+			"delete": {
+				"summary": "Deletar o imóveil",
+				"description": "Rota para deletar um imóvel",
+				"tags": [
+					"Imóveis"
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"description": "ID para referenciar o imóvel que vai ser excluido",
+						"required": true
+					}
+				],
+				"responses": {
+					"204": {
+						"description": "Deletado com Sucesso!"
+					},
+					"400": {
+						"description": "Erro ao deletar"
+					}
+				}
+			}
+		},
+		"/imoveis/search": {
+			"get": {
+				"summary": "Busca por tipo | quarto | vagas | metragem",
+				"description": "Rota para buscar por tipo | quarto | vagas | metragem",
+				"tags": [
+					"Imóveis"
+				],
+				"parameters": [
+					{
+						"name": "tipo",
+						"in": "query",
+						"description": "código  do tipo para buscar",
+						"required": false
+					},
+					{
+						"name": "quarto",
+						"in": "query",
+						"description": "Quantidade de quarto buscar",
+						"required": false
+					},
+					{
+						"name": "vagas",
+						"in": "query",
+						"description": "Quantidade de vagas buscar",
+						"required": false
+					},
+					{
+						"name": "metragem",
+						"in": "query",
+						"description": "Metragem do imóveis",
+						"required": false
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/Imoveis"
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Erro ao cadastrar"
+					}
+				}
+			}
+		},
+		"/imoveis/index": {
+			"get": {
+				"summary": "Traz todos os imóveis",
+				"description": "Rota trazer todos os imóveis",
+				"tags": [
+					"Imóveis"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/Imoveis"
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Erro ao cadastrar"
+					}
+				}
+			}
+		},
+		"/imoveis/show/{id}": {
+			"get": {
+				"summary": "Busca imóveis por ID",
+				"description": "Rota para buscar por id o imóvel",
+				"tags": [
+					"Imóveis"
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"description": "ID do imóvel para buscar",
+						"required": true
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/Imoveis"
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Erro ao cadastrar"
+					}
+				}
+			}
+		}
+	},
+	"components": {
+		"schemas": {
+			"Tipo": {
+				"type": "object",
+				"properties": {
+					"tipo": {
+						"type": "string"
+					}
+				}
+			},
+			"Imóveis": {
+				"type": "object",
+				"properties": {
+					"quarto": {
+						"type": "number"
+					},
+					"metragem": {
+						"type": "number"
+					},
+					"vagas": {
+						"type": "number"
+					},
+					"tipo": {
+						"type": "number"
+					}
+				}
+			}
+		}
+	}
+}

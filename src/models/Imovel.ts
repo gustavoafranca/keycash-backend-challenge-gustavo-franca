@@ -17,7 +17,7 @@ export default class Imoveis {
     @Column()
     vagas: number;
 
-    @ManyToOne(type => Tipo, imoveis => Imoveis)
+    @ManyToOne(type => Tipo, imoveis => imoveis.imoveis, {eager: true})
     tipo: Tipo;
 
 	@CreateDateColumn()
